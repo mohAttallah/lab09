@@ -29,9 +29,17 @@ class DataCollection {
   }
 
   delete(id) {
-    return this.model.destroy({ where: { id }});
+    return this.model.destroy({ where: { id } });
   }
 
+  async readUserOrder(id, model) {
+
+    const records = await this.model.findOne({
+      where: { id },
+      include: model
+    });
+    return records;
+  }
 }
 
 module.exports = DataCollection;

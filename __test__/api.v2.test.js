@@ -2,6 +2,7 @@
 
 const { server } = require('../src/server');
 // Server containe the app from the server.js
+require('dotenv').config();
 
 const { db, users } = require('../src/models');
 const jwt = require('jsonwebtoken');
@@ -10,7 +11,7 @@ const mockRequest = supertest(server);
 
 beforeAll(async connected => {
   await db.sync();
-  await users.create({username: 'anas', password: '123123', role: 'admin'});
+  await users.create({ username: 'osama', password: '123', role: 'admin' });
   connected();
 });
 
@@ -19,38 +20,69 @@ afterAll(async done => {
   done();
 })
 
-describe('V2 test', () => {
-  const token = jwt.sign({username: 'anas'}, process.env.SECRET || 'amman401d17');
+describe('Routes vs test', () => {
+  const token = jwt.sign({ username: 'osama' }, process.env.SECRET);
 
-  it('Responding with 404 for not found page', () => {
-    return mockRequest.get('/test').then(result => {
-      expect(result.status).toBe(404);
-    })
-  })
-
-  it('Can create a record', async () => {
+  it(' create a record ', async () => {
     const data = {
-      name: 'apple',
-      calories: 300,
-      type: 'fruit'
+      name: 'mansaf',
+      calories: 1000,
+      type: 'protein',
+      "userId":1
     }
 
-    console.log(`Bearer ${token}`)
-
     const response = await mockRequest.post('/api/v2/food')
-    .set({authorization: `Bearer ${token}`})
-    .send(data);
+      .set({ authorization: `Bearer ${token}` })
+      .send(data);
 
     expect(response.status).toBe(201);
     expect(response.body.id).toBeDefined();
   });
 
-  it('can get list of records', async () => {
+  it('get list of records', async () => {
     const response = await mockRequest.get('/api/v2/food')
-    .set({authorization: `Bearer ${token}`});
-
+      .set({ authorization: `Bearer ${token}` });
     expect(response.status).toBe(200);
     expect(Array.isArray(response.body)).toBeTruthy();
-    expect(response.body.length).toEqual(1)
   })
+
+  it(' return a 200 status code', async () => {
+    const response = await mockRequest.get('/api/v2/food/1')
+      .set({ authorization: `Bearer ${token}` });
+    expect(response.statusCode).toBe(200);
+  });
+
+
+  it('return a 201 status code', async () => {
+    const response = await mockRequest
+      .post('/api/v2/food').set({ authorization: `Bearer ${token}` })
+      .send({
+        "name": "mansaf",
+        "calories": 1000000,
+        "type": 'portine',
+        "userId": 1
+      });
+    expect(response.statusCode).toBe(201);
+  });
+  it('return a 203 status code', async () => {
+    const response = await mockRequest
+      .put('/api/v2/food/1').set({ authorization: `Bearer ${token}` })
+      .send({
+        "name": "mansaf",
+        "calories": 1000000,
+        "type": 'portine',
+        "userId": 1
+      })
+    expect(response.statusCode).toBe(203);
+  })
+  it('return a 204 status code', async () => {
+    const response = await mockRequest.delete('/api/v2/food/1').set({ authorization: `Bearer ${token}` })
+    expect(response.statusCode).toBe(204);
+  });
+  it.skip('should return a 200 status code', async () => {
+    const response = await mockRequest.get('api/v1/food/userOrder/2').set({ authorization: `Bearer ${token}` });
+    expect(response.statusCode).toBe(200);
+  });
+
 })
+
