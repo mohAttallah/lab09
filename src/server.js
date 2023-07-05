@@ -21,7 +21,7 @@ app.use('/api/v2', v2Routes);
 app.use(authRoutes);
 
 app.get('/', (req, res) => {
-  res.status(200).json({ message: "work" })
+  res.status(200).json({ message: "Welcome to the online store" })
 })
 app.get('/intentionalError', intentionalError);
 

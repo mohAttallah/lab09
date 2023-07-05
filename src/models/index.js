@@ -11,7 +11,7 @@ const electronicsModel = require('./electronics/model');
 const Collection = require('./data-collection.js');
 
 
-const DATABASE_URL = process.env.NODE_ENV === 'test' ? 'sqlite::memory' : process.env.DATABASE_URL;
+const DATABASE_URL = process.env.NODE_ENV === 'test' ? 'sqlite::memory' : process.env.DATABASE_URI;
 const DATABASE_CONFIG = process.env.NODE_ENV === 'production' ? {
   dialectOptions: {
     ssl: {
