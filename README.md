@@ -1,18 +1,18 @@
-# lab09# Lab 09
+# Lab 09
 ## Auth Module Final Project
 Authors: Sham Al-Jalam, Mohammed Attallah
 
 ## Description
 
-It's an online store that provides four categories of products: food, clothing, user items, and electricians. Users can sign up on the store, choose products from these categories, and later check their choices.
+It's an online store that provides four categories of products: food, clothing, books, and electricians. Users can sign up on the store, choose products from these categories, and later check their choices.
 
 ## URLs
 
 * deployed application : [https://onlinestore-uyis.onrender.com](https://onlinestore-uyis.onrender.com)
 
-* Github actions: [https://github.com/ShamAhmad2022/basic-auth/actions](https://github.com/ShamAhmad2022/basic-auth/actions)
+* Github actions: [https://github.com/mohAttallah/lab09/actions](https://github.com/mohAttallah/lab09/actions)
 
-*  pull request: [https://github.com/ShamAhmad2022/basic-auth/pull/1](https://github.com/ShamAhmad2022/basic-auth/pull/1)
+*  pull request: [https://github.com/mohAttallah/lab09/pull/2](https://github.com/mohAttallah/lab09/pull/2)
 
 ### Setup:
 .env requirements:
