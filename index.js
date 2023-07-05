@@ -8,3 +8,4 @@ const PORT = process.env.PORT || 3001
 db.sync().then(() => {
   server.start(PORT);
 });
+//{ force: true }

@@ -6,8 +6,8 @@ module.exports = (req, res, next) => {
   console.log("-----------------------------------");
   const modelName = req.params.model;
   console.log(modelName);
+  req.model = dataModules[modelName];
   if (dataModules[modelName]) {
-    req.model = dataModules[modelName];
     next();
   } else {
     next('Invalid Model');
