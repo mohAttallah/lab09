@@ -23,7 +23,7 @@ afterAll(async done => {
 
 
 describe('GET /secret', () => {
-    const token = jwt.sign({ username: 'osama' }, process.env.SECRET);
+    const token = jwt.sign({ username: 'osama' }, process.env.SECRET || 'anything') ;
     it('should return a 200 status code', async () => {
         const response = await mockRequest.get('/secret').set({ authorization: `Bearer ${token}` });
         expect(response.statusCode).toBe(200);

@@ -21,7 +21,7 @@ afterAll(async done => {
 })
 
 describe('Routes vs test', () => {
-  const token = jwt.sign({ username: 'osama' }, process.env.SECRET);
+  const token = jwt.sign({ username: 'osama' }, process.env.SECRET|| 'anything');
 
   it(' create a record ', async () => {
     const data = {
