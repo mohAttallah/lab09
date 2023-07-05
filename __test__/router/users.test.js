@@ -28,7 +28,7 @@ describe('GET /users', () => {
         expect(response.statusCode).toBe(200);
         console.log("-----------------------------------------");
         console.log(response.body);
-        expect(response.body.isArray).toEqual(["osama"]);
+        expect(response.body).toEqual(["osama"]);
     });
 });
 
