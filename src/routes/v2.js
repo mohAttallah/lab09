@@ -16,7 +16,6 @@ router.get('/:model/:id', bearer, handleGetOne);
 router.post('/:model', bearer, acl('create'), handleCreate);
 router.put('/:model/:id', bearer, acl('update'), handleUpdate);
 router.delete('/:model/:id', bearer, acl('delete'), handleDelete);
-router.get('/:model/userOrder/:id', bearer, acl('read'), handleUserOrder);
 
 async function handleGetAll(req, res) {
   let allRecords = await req.model.get();

@@ -5,8 +5,7 @@ const foodModel = (sequelize, DataTypes) => sequelize.define('food', {
   calories: { type: DataTypes.INTEGER, required: true },
   type: { type: DataTypes.ENUM('fruit', 'vegetable', 'protein'),
     required: true
-  },
-  userId: { type: DataTypes.INTEGER, allowNull: false }
+  }
 });
 
 module.exports = foodModel;

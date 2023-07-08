@@ -26,7 +26,6 @@ describe('GET /users', () => {
     it('should return a 200 status code', async () => {
         const response = await mockRequest.get('/users').set({ authorization: `Bearer ${token}` });
         expect(response.statusCode).toBe(200);
-        console.log("-----------------------------------------");
         console.log(response.body);
         expect(response.body).toEqual(["osama"]);
     });

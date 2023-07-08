@@ -1,18 +1,14 @@
 # Lab 09
-## Auth Module Final Project
-Authors: Sham Al-Jalam, Mohammed Attallah
-
-## Description
-
-It's an online store that provides four categories of products: food, clothing, books, and electricians. Users can sign up on the store, choose products from these categories, and later check their choices.
+## Access Control
+Authors: Sham Al-Jalam
 
 ## URLs
 
-* deployed application : [https://onlinestore-uyis.onrender.com](https://onlinestore-uyis.onrender.com)
+* deployed application : []()
 
-* Github actions: [https://github.com/mohAttallah/lab09/actions](https://github.com/mohAttallah/lab09/actions)
+* Github actions: []()
 
-*  pull request: [https://github.com/mohAttallah/lab09/pull/2](https://github.com/mohAttallah/lab09/pull/2)
+*  pull request: []()
 
 ### Setup:
 .env requirements:
@@ -46,10 +42,8 @@ It's an online store that provides four categories of products: food, clothing, 
                 "read"
             ],
             "id": 1,
-            "username": "ymym",
+            "username": "sham",
             "password": "$2b$10$Wx0kn4fWK0J88iOeAog/nOuQ.//h1Gz5Cu9QfqsDkeAXcBZxBRXvS",
-            "age": 22,
-            "email": "somethb",
             "role": "regular",
             "updatedAt": "2023-07-05T16:12:14.304Z",
             "createdAt": "2023-07-05T16:12:14.304Z"
@@ -68,10 +62,8 @@ It's an online store that provides four categories of products: food, clothing, 
                 "read"
             ],
             "id": 1,
-            "username": "ymym",
+            "username": "sham",
             "password": "$2b$10$Wx0kn4fWK0J88iOeAog/nOuQ.//h1Gz5Cu9QfqsDkeAXcBZxBRXvS",
-            "age": 22,
-            "email": "somethb",
             "role": "regular",
             "updatedAt": "2023-07-05T16:12:14.304Z",
             "createdAt": "2023-07-05T16:12:14.304Z"
@@ -85,9 +77,9 @@ It's an online store that provides four categories of products: food, clothing, 
     * Returns Object
     ```Js
     [
-    "Lara",
-    "Hasaan",
-    "Ahmad"
+        "sham",
+        "Leon",
+        "Lara"
     ]
     ```
 * Endpoint: /secret (require Auth)
@@ -106,19 +98,15 @@ It's an online store that provides four categories of products: food, clothing, 
 
     -foods
 
-    -books
-
-    -electronics
-
-    for example: if we want to add a book, the enpoint will be: /api/v1/books 
+    for example: if we want to add food, the enpoint will be: /api/v1/food 
 
     * Returns Object
     ```Js
     {
         "id": 1,
-        "title": "books1",
-        "author": "ahmad",
-        "type": "novel",
+        "name": "Mango",
+        "calories": 3000,
+        "type": 'fruit',
         "userId": 1,
         "updatedAt": "2023-07-05T16:14:35.988Z",
         "createdAt": "2023-07-05T16:14:35.988Z"
@@ -131,10 +119,6 @@ It's an online store that provides four categories of products: food, clothing, 
     -clothes
 
     -foods
-
-    -books
-
-    -electronics
 
     for example: if we want to add a clothes, the enpoint will be: /api/v1/clothes
 
@@ -151,55 +135,13 @@ It's an online store that provides four categories of products: food, clothing, 
     }
     ```
 
-
-    * Endpoint: /:model/userOrder/:id:
-    this enpoint will return a jason with the user information, along wih the products he orders based on these model that should be passed in the URL:
-
-    -clothes
-
-    -foods
-
-    -books
-
-    -electronics
-
-    for example: if we want to see a certain user by their id along with the food they ordered: /api/v1/clothes
-
-    * Returns Object
-    ```Js
-    {
-        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InlteW0iLCJpYXQiOjE2ODg1NzQ2NTd9.RpgkK8dTKjYFx5evjDg3U_ONCmSfLPDyy3UepGnVsYY",
-        "capabilities": [
-            "read"
-        ],
-        "id": 1,
-        "username": "ymym",
-        "password": "$2b$10$Wx0kn4fWK0J88iOeAog/nOuQ.//h1Gz5Cu9QfqsDkeAXcBZxBRXvS",
-        "role": "regular",
-        "age": 22,
-        "email": "somethb",
-        "createdAt": "2023-07-05T16:12:14.304Z",
-        "updatedAt": "2023-07-05T16:12:14.304Z",
-        "food": [
-            {
-                "id": 1,
-                "name": "Mansaf",
-                "calories": 1000,
-                "type": "protein",
-                "userId": 1,
-                "createdAt": "2023-07-05T16:19:32.991Z",
-                "updatedAt": "2023-07-05T16:19:32.991Z"
-            }
-        ]
-    }
-    ```
-
 ### Test:
 * Unit Test: npm test
-![Test](./images//lab09tests.png)
+
+![Test](./images/tests.png)
 
 ### UML
-![WML](./images//lab09UML.jpg)
+![WML](./images/auth-api%20UML.png)
 
 ### WRRC
 ![WRRC](./images//lab09WRRC.jpg)

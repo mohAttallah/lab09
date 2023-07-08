@@ -4,7 +4,6 @@ const express = require('express');
 const dataModules = require('../models');
 const modelsMiddleware = require('../middleware/modelsMiddleware');
 const { users } = require('../models/index');
-const { books } = require('../models/index');
 
 const router = express.Router();
 
@@ -13,7 +12,6 @@ router.param('model', modelsMiddleware);
 
 router.get('/:model', handleGetAll);
 router.get('/:model/:id', handleGetOne);
-router.get('/:model/userOrder/:id', handleUserOrde);
 router.post('/:model', handleCreate);
 router.put('/:model/:id', handleUpdate);
 router.delete('/:model/:id', handleDelete);
@@ -46,14 +44,6 @@ async function handleDelete(req, res) {
   let id = req.params.id;
   let deletedRecord = await req.model.delete(id);
   res.status(204).json(deletedRecord);
-}
-async function handleUserOrde(req, res) {
-  const model = req.params.model;
-  console.log("-------------------------------");
-  console.log(model.model);
-  const id = req.params.id;
-  const user = await users.readUserOrder(id, model);
-  res.status(200).json(user)
 }
 
 module.exports = router;
